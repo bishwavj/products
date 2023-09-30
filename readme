@@ -1,0 +1,10 @@
+#Create a .env file in the root directory and provide values for these two urls:
+DATABASE_URL
+REDIS_URL
+
+#Run these commands:
+npx prisma migrate dev --name init
+npm install
+node server.js
+
+#Routes.js contains the API routes 
