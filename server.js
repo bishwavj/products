@@ -18,7 +18,7 @@ app.use(
 app.use(routes);
 
 testDatabaseConnection(); 
-connectToRedis();
+// connectToRedis();
 
 app.listen(3000, () => {
   console.log(`Server is running on http://localhost:${port}`);
@@ -34,22 +34,22 @@ async function testDatabaseConnection() {
   }
 }
 
-function connectToRedis() {
-  const REDIS_URL =process.env.REDIS_URL;
+// function connectToRedis() {
+//   const REDIS_URL =process.env.REDIS_URL;
 
-  const redis = new Redis(REDIS_URL, {
-    tls: {
-      rejectUnauthorized: false
-    },
-  });
+//   const redis = new Redis(REDIS_URL, {
+//     tls: {
+//       rejectUnauthorized: false
+//     },
+//   });
 
-  redis.on("connect", () => {
-    console.log("Connected to Redis");
-  });
+//   redis.on("connect", () => {
+//     console.log("Connected to Redis");
+//   });
 
-  redis.on("error", (err) => {
-    console.error("Unable to connect to Redis:", err);
-  });
-}
+//   redis.on("error", (err) => {
+//     console.error("Unable to connect to Redis:", err);
+//   });
+// }
 
 

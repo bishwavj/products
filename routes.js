@@ -14,7 +14,7 @@ router.get("/products/:idOrName", productController.getProduct);
 
 router.post("/products/:id/toggle", productController.toggleProductStatus);
 
-router.post("/upload-products", productController.uploadProducts);
+// router.post("/upload-products", productController.uploadProducts);
 
 router.get("/products-all", productController.allProducts);
 

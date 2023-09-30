@@ -108,29 +108,29 @@ module.exports = {
     res.json(updatedProduct);
   },
 
-  uploadProducts: async (req, res) => {
-    if (!req.files) {
-      return res.status(400).json({ error: "No file uploaded" });
-    }
+  // uploadProducts: async (req, res) => {
+  //   if (!req.files) {
+  //     return res.status(400).json({ error: "No file uploaded" });
+  //   }
 
-    try {
-      const productsFile = req.files.products;
-      let content = productsFile.data.toString();
-      if (content.charCodeAt(0) === 0xfeff) {
-        content = content.slice(1);
-      }
-      const products = JSON.parse(content);
-      await productQueue.add("Create products", { products });
+  //   try {
+  //     const productsFile = req.files.products;
+  //     let content = productsFile.data.toString();
+  //     if (content.charCodeAt(0) === 0xfeff) {
+  //       content = content.slice(1);
+  //     }
+  //     const products = JSON.parse(content);
+  //     await productQueue.add("Create products", { products });
 
-      res.status(202).json({
-        message: "Products are being processed",
-        uploadedProducts: products,
-      });
-    } catch (error) {
-      console.log("error:", error);
-      res.status(500).json({ error: "Failed to process products" });
-    }
-  },
+  //     res.status(202).json({
+  //       message: "Products are being processed",
+  //       uploadedProducts: products,
+  //     });
+  //   } catch (error) {
+  //     console.log("error:", error);
+  //     res.status(500).json({ error: "Failed to process products" });
+  //   }
+  // },
   allProducts: async (req, res) => {
         try{
         let products = await prisma.product.findMany({});
